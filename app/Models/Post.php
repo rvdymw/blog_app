@@ -14,6 +14,7 @@ class Post extends Model
         'category_id',
         'author_id',
     ];
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(Author::class);
@@ -23,5 +24,6 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
     use HasFactory;
 }

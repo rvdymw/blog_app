@@ -25,7 +25,8 @@ class PostController extends Controller
             return response()->json(['message' => 'Post not found'], 404)->header('Content-Type', 'application/json');
         }
 
-        return response()->json(['post' => $post])->header('Content-Type', 'application/json');
+        return response()->json(['post' => $post])
+            ->header('Content-Type', 'application/json');
     }
 
     public function create()
@@ -45,12 +46,14 @@ class PostController extends Controller
             ]);
 
         if($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400)->header('Content-Type', 'application/json');
+            return response()->json(['errors' => $validator->errors()], 400)
+                ->header('Content-Type', 'application/json');
         }
 
         $post = Post::create($request->all());
 
-        return response()->json(['post' => $post], 201);
+        return response()->json(['post' => $post], 201)
+            ->header('Content-Type', 'application/json');
     }
 
     public function edit(Post $post)
@@ -71,17 +74,20 @@ class PostController extends Controller
         ]);
 
         if($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400)->header('Content-Type', 'application/json');
+            return response()->json(['errors' => $validator->errors()], 400)
+                ->header('Content-Type', 'application/json');
         }
 
         $post->update($request->all());
 
-        return response()->json(['post' => $post])->header('Content-Type', 'application/json');
+        return response()->json(['post' => $post])
+            ->header('Content-Type', 'application/json');
     }
 
     public function destroy(Post $post)
     {
         $post->delete();
-        return response()->json(null, 204)->header('Content-Type', 'application/json');
+        return response()->json(null, 204)
+            ->header('Content-Type', 'application/json');
     }
 }

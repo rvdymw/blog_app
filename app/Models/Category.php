@@ -12,10 +12,10 @@ class Category extends Model
 
     public $timestamps = false;
 
-
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
+
     use HasFactory;
 }
